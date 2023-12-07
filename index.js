@@ -1,6 +1,6 @@
 import express from "express";
 import "dotenv/config";
-import router from "./routes/routes.js";
+import router from "./routes/index.js";
 import cors from "cors";
 import sequelize from "./config/sequelize-config.mjs";
 
@@ -15,8 +15,6 @@ app.use(express.json());
     console.log(
       "Connection to the database has been established successfully."
     );
-    await sequelize.sync();
-    console.log("Models have been synchronized successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
