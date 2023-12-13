@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/sequelize-config.mjs";
+import sequelize from "../config/config.js";
 
 const Profile = sequelize.define("Profiles", {
   id: {
@@ -35,10 +35,15 @@ const Profile = sequelize.define("Profiles", {
     type: DataTypes.BLOB,
     allowNull: true,
   },
-  userId:{
-    type:DataTypes.STRING,
-    allowNull: true
-  }
 });
 
+const associate = (models) => {
+  const { User } = models;
+  Profile.belongsTo(User, {
+    foreignKey: "userId", // The foreign key in the Profile model
+    as: "user", // Alias for the association
+  });
+};
+
+export { associate };
 export default Profile;

@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/sequelize-config.mjs";
+import sequelize from "../config/config.js";
+import Profile,{ associate as associateProfile }  from "./Profile.js";
 
 const User = sequelize.define("Users", {
   id: {
@@ -38,6 +39,18 @@ const User = sequelize.define("Users", {
     type: DataTypes.DATE,
     defaultValue: Date.now(),
   },
+  profileId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    unique: true,
+  },
 });
+
+User.hasOne(Profile, {
+  foreignKey: "userId", // The foreign key in the Profile model
+  as: "profile", // Alias for the association
+});
+
+associateProfile({ User });
 
 export default User;
