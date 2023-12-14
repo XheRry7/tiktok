@@ -18,7 +18,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       phoneNumber: {
         type: Sequelize.STRING,
@@ -36,16 +35,16 @@ module.exports = {
       timeAccountCreation: {
         type: Sequelize.DATE,
         defaultValue: Date.now(),
-      }
+      },
     });
-    await queryInterface.addColumn('Users', 'profileId', {
+    await queryInterface.addColumn("Users", "profileId", {
       type: Sequelize.INTEGER,
       references: {
-        model: 'Profiles',
-        key: 'id',
+        model: "Profiles",
+        key: "id",
       },
-      onUpdate: 'CASCADE',
-      onDelete: 'SET NULL',
+      onUpdate: "CASCADE",
+      onDelete: "SET NULL",
     });
   },
   down: async (queryInterface) => {

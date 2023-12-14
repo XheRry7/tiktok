@@ -1,9 +1,9 @@
-import sequelize from "./config/sequelize-config.mjs";
+import config from "./config/db";
 
 (async () => {
   try {
-    await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
+    await config.authenticate();
+    await config.sync({ force: true });
     console.log("Models have been synchronized successfully.");
   } catch (error) {
     console.error("Unable to do migration:", error);

@@ -7,33 +7,31 @@ const Profile = sequelize.define("Profiles", {
     primaryKey: true,
     autoIncrement: true,
   },
+  name: {
+    type: DataTypes.STRING,
+  },
   bio: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
   posts: {
     type: DataTypes.JSON,
-    allowNull: false,
   },
   followers: {
     type: DataTypes.JSON,
-    allowNull: false,
+    defaultValue: 0,
   },
   following: {
     type: DataTypes.JSON,
-    allowNull: false,
+    defaultValue: 0,
   },
   likes: {
     type: DataTypes.INTEGER,
-    allowNull: false,
   },
   liked: {
     type: DataTypes.INTEGER,
-    allowNull: true,
   },
   ProfilePicture: {
     type: DataTypes.BLOB,
-    allowNull: true,
   },
 });
 
