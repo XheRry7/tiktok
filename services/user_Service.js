@@ -11,7 +11,7 @@ export const logInUser = async (obj) => {
 };
 
 export const userExists = async (searchObject) => {
-  const user = await User.findOne(searchObject);
+  const user = await User.findOne({ where:searchObject});
   return user;
 };
 

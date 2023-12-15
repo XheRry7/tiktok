@@ -3,7 +3,7 @@ import sequelize from "../config/config.js";
 import Profile,{ associate as associateProfile }  from "./Profile.js";
 
 const User = sequelize.define("Users", {
-  id: {
+  userId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -39,16 +39,11 @@ const User = sequelize.define("Users", {
     type: DataTypes.DATE,
     defaultValue: Date.now(),
   },
-  profileId: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    unique: true,
-  },
 });
 
 User.hasOne(Profile, {
   foreignKey: "userId", // The foreign key in the Profile model
-  as: "profile", // Alias for the association
+  as: "Profile", // Alias for the association
 });
 
 associateProfile({ User });

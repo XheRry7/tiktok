@@ -28,22 +28,26 @@ export const Login = async (req, res) => {
     const user = await userExists({ email: email.toLowerCase() });
     if (
       user &&
-      user?.password &&
-      (await bcrypt.compare(password, user?.password))
+      user?.dataValues?.password &&
+      (await bcrypt.compare(password, user?.dataValues.password))
     ) {
       const jwtSecret = process.env.JWT_SECRET;
-      const token = Jwt.sign({ user_id: user._id, email }, jwtSecret, {
-        expiresIn: "2h",
-      });
+      const token = Jwt.sign(
+        { user_id: user.dataValues.userId, email },
+        jwtSecret,
+        {
+          expiresIn: "2h",
+        }
+      );
       const data = {
-        id: user._id,
+        id: user.dataValues.userId,
         token,
         email,
       };
       res.status(200).json(data);
     }
+    res.status(401).json({ message: "Incorrect Email or Password." });
   } catch (err) {
     console.log(err);
   }
 };
-

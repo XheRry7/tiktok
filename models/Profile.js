@@ -39,7 +39,7 @@ const associate = (models) => {
   const { User } = models;
   Profile.belongsTo(User, {
     foreignKey: "userId", // The foreign key in the Profile model
-    as: "user", // Alias for the association
+    as: "User", // Alias for the association
   });
 };
 

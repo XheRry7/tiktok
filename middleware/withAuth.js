@@ -3,7 +3,7 @@ import jsonwebtoken from "jsonwebtoken";
 
 export const withAuth = (req, res, next) => {
   const token =
-    req.body.token || req.query.token || req.header["Authorization"];
+    req.body.token || req.query.token || req.rawHeaders["Authorization"];
 
   if (!token) {
     return res.status(403).send("A token is required for authentication");
