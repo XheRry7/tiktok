@@ -5,14 +5,17 @@ import Profile from "../models/Profile.js";
 //   return profile;
 // };
 
-// export const getSingleProfile = async (id) => {
-//   const profile = await Profile.find({ pid: id });
-//   if (!profile) return "no profile found ";
-//   return profile;
-// };
+export const getSingleProfile = async (id) => {
+  const profile = await Profile.find({ pid: id });
+  if (!profile) return "no profile found ";
+  return profile;
+};
 
 export const getSingleProfileById = async (id) => {
-  const profile = await Profile.findOne({ where : { userId: id}, include:['User'] });
+  const profile = await Profile.findOne({
+    where: { userId: id },
+    include: ["User"],
+  });
   if (!profile) return "no profile found ";
   return profile;
 };
@@ -23,25 +26,13 @@ export const addProfile = async (profileData) => {
   return profile;
 };
 
-// export const update = async (id, data) => {
-//   const updated = await Profile.findByIdAndUpdate(
-//     { _id: id },
-//     {
-//       $set: {
-//         Price: data.Price,
-//         brandName: data.brandName,
-//         category: data.category,
-//         description: data.description,
-//         sizes: data.sizes,
-//         status: data.status,
-//         title: data.title,
-//         images: data.images,
-//       },
-//     }
-//   );
-
-//   return updated;
-// };
+export const update = async (id, data) => {
+  const updated = await Profile.update(data, {
+    where: { userId: id },
+    returning: true,
+  });
+  return updated;
+};
 
 // export const deleteProfile = async (id) => {
 //   const del = await Profile.findByIdAndDelete({ _id: id });

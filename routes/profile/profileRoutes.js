@@ -3,7 +3,7 @@ import { withAuth } from "../../middleware/withAuth.js";
 import {
   // getProfile,
   createUserProfile,
-  // updateProfile,
+  updateProfile,
   // delProfile,
   getProfileByID,
   // getUserProfile,
@@ -25,12 +25,12 @@ router.post(
   upload.single("picture"),
   createUserProfile
 );
-// router.put(
-//   "/updateProfile",
-//   withAuth,
-//   upload.array("pictures", 10),
-//   updateProfile
-// );
+router.put(
+  "/updateProfile/:id",
+  withAuth,
+  upload.single("picture"),
+  updateProfile
+);
 router.get("/getProfileById/:id", getProfileByID);
 // router.get("/getProfilewithPk/:id", getUserData);
 // router.delete("/deleteProfile", withAuth, delProfile);

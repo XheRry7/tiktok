@@ -33,6 +33,10 @@ const Profile = sequelize.define("Profiles", {
   ProfilePicture: {
     type: DataTypes.BLOB,
   },
+  isArchive:{
+    type:DataTypes.BOOLEAN,
+    defaultValue: false
+  }
 });
 
 const associate = (models) => {
