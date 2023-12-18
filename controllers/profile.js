@@ -1,11 +1,7 @@
 import {
-  // profile,
-  // deleteProfile,
   addProfile,
   update,
-  // getSingleProfile,
   getSingleProfileById,
-  // getShopKeeperProfile,
 } from "../services/profile_Service.js";
 // import { uploadImage } from "../s3";
 
@@ -58,81 +54,3 @@ export const updateProfile = async (req, res) => {
     return res.send({ statusCode: 500, message: err?.message });
   }
 };
-
-// export const getUserProfile = async (req, res) => {
-//   const id = req.params.id;
-//   if (!id)
-//     return res.send({
-//       message: "ID is required in parameters",
-//       statusCode: 500,
-//     });
-//   try {
-//     const profile = await getSingleProfile(id);
-//     return res.send({ statusCode: 200, data: profile });
-//   } catch (err) {
-//     return res.send({ statusCode: 500, message: err?.message });
-//   }
-// };
-
-// export const getUserData = async (req, res) => {
-//   const id = req.params.id;
-//   if (!id)
-//     return res.send({
-//       message: "ID is required in parameters",
-//       statusCode: 500,
-//     });
-//   try {
-//     const profile = await getSingleProfileById(id);
-//     return res.send({ statusCode: 200, data: profile });
-//   } catch (err) {
-//     return res.send({ statusCode: 500, message: err?.message });
-//   }
-// };
-
-// export const editProfile = async (req, res) => {
-//   const id = req.params.id;
-//   const file = req.file;
-//   const profileData = req.body;
-//   if (!id)
-//     return res.send({
-//       message: "ID is required in parameters",
-//       statusCode: 500,
-//     });
-//   try {
-//     if (req.file) {
-//       profileData.images = file?.filename; // update the image filename/path
-//     }
-//     await update(id, profileData);
-//     return res.send({ message: "data updated successfully", statusCode: 200 });
-//   } catch (err) {
-//     return res.send({ statusCode: 500, message: err?.message });
-//   }
-// };
-
-// export const getProfile = async (req, res) => {
-//   try {
-//     const profileData = await profile();
-//     return res.send({ statusCode: 200, data: profileData });
-//   } catch (err) {
-//     return res.send({ statusCode: 500, message: err?.message });
-//   }
-// };
-
-// export const delProfile = async (req, res) => {
-//   const id = req.query.id;
-//   if (!id) {
-//     return res.send({
-//       message: "ID is required in parameters",
-//       statusCode: 500,
-//     });
-//   }
-//   try {
-//     await deleteProfile(id);
-//     return res.send({
-//       message: "profile deleted successfully",
-//       statsCode: 200,
-//     });
-//   } catch (err) {
-//     return res.send({ statusCode: 500, message: err?.message });
-//   }
-// };
