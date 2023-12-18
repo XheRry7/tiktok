@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/config.js";
-import Profile,{ associate as associateProfile }  from "./Profile.js";
+import Profile, { associate as associateProfile } from "./Profile.js";
+import Post, { associate as associatePost } from "./post.js";
 
 const User = sequelize.define("Users", {
   userId: {
@@ -46,6 +47,12 @@ User.hasOne(Profile, {
   as: "Profile", // Alias for the association
 });
 
+User.hasMany(Post, {
+  foreignKey: "userId", // The foreign key in the Profile model
+  as: "Post", // Alias for the association
+});
+
 associateProfile({ User });
+associatePost({ User });
 
 export default User;

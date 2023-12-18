@@ -11,7 +11,7 @@ export const logInUser = async (obj) => {
 };
 
 export const userExists = async (searchObject) => {
-  const user = await User.findOne({ where:searchObject});
+  const user = await User.findOne({ where: searchObject });
   return user;
 };
 
@@ -27,4 +27,13 @@ export const getUsers = async () => {
     console.log("no users found in db");
   }
   return users;
+};
+
+export const getUserDataByUserId = async (id) => {
+  const user = await User.findOne({
+    where: { userId: id },
+    include: ["Profile", "Post"],
+  });
+  if (!user) return "no user found ";
+  return user;
 };

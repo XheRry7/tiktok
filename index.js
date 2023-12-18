@@ -15,10 +15,9 @@ app.use(express.json());
     console.log(
       "Connection to the database has been established successfully."
     );
-  //   sequelize.sync({ alter: true }) 
-  // .then(() => {
-  //   console.log('Database and tables synced!');
-  // })
+    // sequelize.sync({ alter: true }).then(() => {
+    //   console.log("Database and tables synced!");
+    // });
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }

@@ -1,6 +1,10 @@
 import bcrypt from "bcrypt";
 import Jwt from "jsonwebtoken";
-import { create, userExists } from "../services/user_Service.js";
+import {
+  create,
+  userExists,
+  getUserDataByUserId,
+} from "../services/user_Service.js";
 
 export const registerUser = async (req, res) => {
   try {
@@ -49,5 +53,20 @@ export const Login = async (req, res) => {
     res.status(401).json({ message: "Incorrect Email or Password." });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getUserData = async (req, res) => {
+  const id = req.params.userId;
+  if (!id)
+    return res.send({
+      message: "ID is required in parameters",
+      statusCode: 500,
+    });
+  try {
+    const user = await getUserDataByUserId(id);
+    return res.send({ statusCode: 200, data: user });
+  } catch (err) {
+    return res.send({ statusCode: 500, message: err?.message });
   }
 };
