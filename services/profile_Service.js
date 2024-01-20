@@ -28,3 +28,8 @@ export const update = async (id, data) => {
   });
   return updated;
 };
+
+export const deleteProfile = async (id) => {
+  const del = await Profile.destroy({where: { id: id }, returning: true});
+  return del;
+};

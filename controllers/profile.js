@@ -2,6 +2,7 @@ import {
   addProfile,
   update,
   getSingleProfileById,
+  deleteProfile
 } from "../services/profile_Service.js";
 // import { uploadImage } from "../s3";
 
@@ -54,3 +55,17 @@ export const updateProfile = async (req, res) => {
     return res.send({ statusCode: 500, message: err?.message });
   }
 };
+
+export const delProfile = async (req, res) => {
+  const id = req.query.userId;
+  if (!id) {
+      return res.send({ message: "userId is required in parameters", statusCode: 500 })
+  }
+  try {
+      await deleteProfile(id);
+      return res.send({ message: "profile deleted successfully", statsCode: 200 })
+  }
+  catch (err) {
+      return res.send({ statusCode: 500, message: err?.message })
+  }
+}

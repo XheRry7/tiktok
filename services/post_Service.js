@@ -27,3 +27,8 @@ export const update = async (id, data) => {
   });
   return updated;
 };
+
+export const deletePost = async (id) => {
+  const del = await Post.destroy({where: { id: id }, returning: true});
+  return del;
+};

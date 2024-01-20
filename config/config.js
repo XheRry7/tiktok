@@ -5,7 +5,7 @@ const sequelize = new Sequelize({
     username: 'postgres',
     password: 'admin',
     host: 'localhost',
-    port: 5433,
+    port: 5432,
     dialect: 'postgres',
     define: {
       timestamps: false, 

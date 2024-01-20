@@ -7,9 +7,35 @@ const Post = sequelize.define("Post", {
     primaryKey: true,
     autoIncrement: true,
   },
-  title: {
+  description: {
+    type: DataTypes.TEXT,
+  },
+  category: {
     type: DataTypes.STRING,
   },
+  likes: {
+    type: DataTypes.ARRAY(DataTypes.BLOB),
+  },
+  comments: {
+    type: DataTypes.ARRAY(DataTypes.BLOB),
+  },
+  shares: {
+    type: DataTypes.ARRAY(DataTypes.BLOB),
+  },
+  bookmarks: {
+    type: DataTypes.ARRAY(DataTypes.BLOB),
+  },
+  numberOfPlays: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+  videoPath: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  // postType:{
+  //   type: DataTypes.STRING
+  // }
 });
 
 const associate = (models) => {

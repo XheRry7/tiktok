@@ -4,6 +4,7 @@ import {
   createUserProfile,
   updateProfile,
   getProfileByID,
+  delProfile
 } from "../../controllers/profile.js";
 import multer from "multer";
 import { storage } from "../../middleware/imageuploader/imageUploader.js";
@@ -25,5 +26,6 @@ router.put(
   updateProfile
 );
 router.get("/getProfileById/:id", withAuth, getProfileByID);
+router.delete("/delProfile/:userId", withAuth, delProfile);
 
 export default router;

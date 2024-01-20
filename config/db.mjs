@@ -4,7 +4,7 @@ const config = {
     password: "admin",
     database: "tiktok-clone",
     host: "localhost",
-    port: 5433,
+    port: 5432,
     dialect: "postgres",
     //   "define": {
     //     "timestamps": false,
@@ -15,14 +15,14 @@ const config = {
     password: "admin",
     database: "tiktok-clone",
     host: "localhost",
-    port: 5433,
+    port: 5432,
     dialect: "postgres",
   },
   username: "postgres",
   password: "admin",
   database: "tiktok-clone",
   host: "localhost",
-  port: 5433,
+  port: 5432,
   dialect: "postgres",
 };
 
